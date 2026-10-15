@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071c14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Тасбих">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="manifest" href="five-sheets-manifest.webmanifest">
+<title>Салават ан-Нария — 5 листов и тасбих</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#071c14;--gold:#e5ca8f;--text:#f7f1e6;--light:#a7c5b1}
+*{box-sizing:border-box}html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--text);min-height:100svh;background:radial-gradient(ellipse at 10% 0%,#173d2d 0%,#0a291c 38%,#03170f 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:calc(158px + env(safe-area-inset-bottom))}
+main{max-width:720px;margin:auto;padding:22px 14px 24px}
+.nav{display:flex;align-items:center;justify-content:space-between;font-weight:750;font-size:11px;color:var(--gold);letter-spacing:1.8px}
+.pill{border:1px solid #3d634d;border-radius:20px;color:var(--light);letter-spacing:0;font-size:10px;padding:7px 9px}
+h1{margin:18px 0 13px;font-size:23px}
+.arbox{border:1px solid #284b36;border-radius:19px;padding:22px 16px 26px;background:rgba(0,20,13,.68);margin-bottom:18px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.arabic{direction:rtl;text-align:center;font-family:"Noto Naskh Arabic","Geeza Pro","Arabic Typesetting",serif;font-weight:500;font-size:clamp(56px,15vw,70px);line-height:1.53;word-spacing:.02em;width:100%;overflow-wrap:normal;hyphens:none}
+.hint{font-size:12px;line-height:1.6;color:var(--light);margin:13px 3px}
+.tools{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.tool{background:#133c2a;border:1px solid #4a6b52;color:var(--text);padding:11px 13px;font-size:12px;border-radius:11px;min-height:43px}
+#status{color:#b9cfbf;font-size:12px;line-height:1.5}
+summary{color:var(--gold);font-size:13px;cursor:pointer}details{margin-top:20px;padding:13px;border:1px solid #375743;border-radius:13px}details p{font-size:12px;line-height:1.6;color:var(--light)}
+.counter{position:fixed;bottom:0;left:0;right:0;background:#07241a;border-top:1px solid #53745b;box-shadow:0 -12px 30px #0007;padding:10px 15px calc(11px + env(safe-area-inset-bottom))}
+.countrow{margin:auto;max-width:690px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.number{font-size:clamp(43px,12vw,62px);font-weight:850;font-variant-numeric:tabular-nums;letter-spacing:-3px;line-height:1.15}
+.label{font-size:11px;color:var(--light)}.controls{display:flex;align-items:center;gap:8px}
+#plus,#minus{border-radius:17px;min-height:76px;font-size:29px;font-weight:750;user-select:none;-webkit-user-select:none}
+#plus{background:var(--gold);color:#08271a;border:0;min-width:140px}#minus{background:#1b4431;color:var(--text);border:1px solid #5b795e;min-width:55px}
+#plus:active,#minus:active{transform:scale(.96)}#rounds{font-size:11px;color:#b7cdbb;text-align:center;margin:6px auto 0}
+dialog{color:var(--text);background:#08271b;border:1px solid #5b795e;border-radius:18px;width:min(94vw,440px);padding:18px}dialog::backdrop{background:#000c}
+dialog h2{margin:0 0 10px;font-size:19px}dialog p{font-size:13px;line-height:1.6;color:var(--light)}
+textarea,input{width:100%;font-size:16px;color:var(--text);background:#04190f;border:1px solid #597a60;border-radius:10px;padding:12px;margin:8px 0;min-height:50px}
+textarea{min-height:90px}.dlgactions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}
+
+/* Single readable Arabic page; font settings adjustable and persisted separately from count. */
+.nav{gap:6px}.pill{white-space:nowrap}
+.arbox{min-height:0;display:block;border:1px solid #284b36;border-radius:20px;background:rgba(0,20,13,.70);padding:15px 13px 20px;overflow:visible}
+.arabic{direction:rtl;text-align:justify;text-align-last:center;font-family:"Noto Naskh Arabic","Geeza Pro","Arabic Typesetting",serif;font-weight:500;font-size:var(--arabic-size,60px);line-height:1.48;word-spacing:0.01em;overflow-wrap:normal;hyphens:none}
+.fontbar{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#0d3022;border:1px solid #355746;border-radius:14px;padding:8px 10px;margin:0 0 5px}
+.fontcaption{color:#d4dabe;font-size:12px}
+.fontbuttons{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.fontbtn{border:1px solid #53745f;background:#19432e;color:#f5f0e6;border-radius:9px;font-size:18px;font-weight:750;min-width:48px;min-height:40px}
+#fontValue{display:inline-block;min-width:36px;text-align:center;color:#e5ca8f;font-weight:750;font-size:14px;font-variant-numeric:tabular-nums}
+#fontSlider{display:block;appearance:auto;accent-color:#e5ca8f;width:100%;height:21px;margin:0 0 8px;touch-action:pan-x}
+@media (max-width:380px){.arbox{padding:12px 11px 17px}#plus{min-width:124px}.fontcaption{font-size:11px}}
+.five-sheet{min-height:clamp(360px,60svh,610px);display:flex;flex-direction:column;justify-content:center;align-items:center;margin-bottom:18px;padding:20px 14px 25px;}
+.sheetindex{font-size:11px;letter-spacing:.10em;color:#d4c18c;font-weight:750;text-align:center;margin-bottom:15px}
+.five-sheet .arabic{text-align:center;text-align-last:center;word-spacing:.02em;line-height:1.50}
+@media(max-width:380px){.five-sheet{padding:16px 12px;min-height:56svh}}
+</style>
+</head>
+<body>
+<main>
+<div class="nav"><span>САЛАВАТ</span><span class="pill">5 ЛИСТОВ · НЕ ХАДИС</span></div>
+<h1>Салават ан-Нария</h1>
+<div class="fontbar" aria-label="Настройка размера арабского текста">
+ <span class="fontcaption">Размер арабских букв</span>
+ <div class="fontbuttons">
+  <button type="button" id="fontMinus" class="fontbtn" aria-label="Уменьшить арабский шрифт">А−</button>
+  <output id="fontValue" for="fontSlider">60</output>
+  <button type="button" id="fontPlus" class="fontbtn" aria-label="Увеличить арабский шрифт">А+</button>
+ </div>
+</div>
+<input type="range" id="fontSlider" min="36" max="86" step="1" value="60" aria-label="Размер арабского текста в пикселях">
+<section class="arbox five-sheet" id="sheet1" aria-label="Лист 1 из 5"><div class="sheetindex">ЛИСТ 1 / 5</div><div class="arabic" dir="rtl" lang="ar">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ</div></section>
+<section class="arbox five-sheet" id="sheet2" aria-label="Лист 2 из 5"><div class="sheetindex">ЛИСТ 2 / 5</div><div class="arabic" dir="rtl" lang="ar">الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ</div></section>
+<section class="arbox five-sheet" id="sheet3" aria-label="Лист 3 из 5"><div class="sheetindex">ЛИСТ 3 / 5</div><div class="arabic" dir="rtl" lang="ar">وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ وَيُسْتَسْقَى الْغَمَامُ</div></section>
+<section class="arbox five-sheet" id="sheet4" aria-label="Лист 4 из 5"><div class="sheetindex">ЛИСТ 4 / 5</div><div class="arabic" dir="rtl" lang="ar">بِوَجْهِهِ الْكَرِيمِ وَعَلَى آلِهِ وَصَحْبِهِ فِي كُلِّ لَمْحَةٍ وَنَفَسٍ</div></section>
+<section class="arbox five-sheet" id="sheet5" aria-label="Лист 5 из 5"><div class="sheetindex">ЛИСТ 5 / 5</div><div class="arabic" dir="rtl" lang="ar">بِعَدَدِ كُلِّ مَعْلُومٍ لَكَ</div></section>
+<p class="hint">Пять крупных листов идут подряд — листай вниз. Редакция «وَحُسْنُ الْخَوَاتِمِ». Это не установленная достоверным хадисом пророческая формула.</p>
+<div class="tools"><button type="button" class="tool" id="backup">Резервный код</button><button type="button" class="tool" id="restore">Восстановить</button><button type="button" class="tool" id="reset">Сброс</button></div>
+<p id="status" role="status">Проверка сохранения…</p>
+<details><summary>Добавить на главный экран iPhone</summary><p>Откройте страницу в Safari → «Поделиться» → «На экран Домой» → «Добавить». После этого открывайте тасбих через новую иконку. Для защиты от удаления данных браузера периодически сохраняйте резервный код в «Заметках».</p></details>
+</main>
+<div class="counter"><div class="countrow"><div><div class="label">Прочитано</div><div class="number" id="count">0</div></div><div class="controls"><button type="button" id="minus" aria-label="Минус один">−1</button><button type="button" id="plus" aria-label="Прибавить одно">+1</button></div></div><div id="rounds">Кругов по 33: 0 · В круге: 0/33</div></div>
+<dialog id="copyDlg"><h2>Резервный код</h2><p>Сохраните код в «Заметках» или отправьте себе. Восстанавливает счёт даже после очистки сайта.</p><textarea id="code" readonly></textarea><div class="dlgactions"><button type="button" class="tool" id="share">Поделиться</button><button type="button" class="tool" id="copy">Копировать</button><button type="button" class="tool" id="closeCopy">Закрыть</button></div></dialog>
+<dialog id="restoreDlg"><h2>Восстановить счёт</h2><p>Введите код вида NARIYA:123 или число прочтений.</p><input type="text" id="restoreCode" placeholder="NARIYA:123" autocomplete="off" inputmode="text"><div id="restoreError" role="alert"></div><div class="dlgactions"><button type="button" class="tool" id="cancelRestore">Отмена</button><button type="button" class="tool" id="applyRestore">Восстановить</button></div></dialog>
+<dialog id="resetDlg"><h2>Сбросить?</h2><p>Счёт будет обнулён. Перед этим лучше сохранить резервный код.</p><div class="dlgactions"><button type="button" class="tool" id="cancelReset">Отмена</button><button type="button" class="tool" id="confirmReset">Обнулить</button></div></dialog>
+<script>
+(function(){
+'use strict';
+var KEY='salawat-nariya-counter-v5',OLD='salawat-nariya-count-v3',DB='nariya-counter-backup-v5';
+var count=0,rev=0,stamp=0,db=null,hasChanged=false,localSaved=false;
+function el(n){return document.getElementById(n)}
+function valid(n){return Number.isSafeInteger(n)&&n>=0}
+function parse(r){if(r==null)return null;try{var j=typeof r==='string'?JSON.parse(r):r;if(j&&valid(j.count))return {count:j.count,rev:valid(j.rev)?j.rev:0,stamp:Number.isFinite(j.stamp)?j.stamp:0};if(valid(j))return {count:j,rev:0,stamp:0}}catch(e){var n=Number(r);if(valid(n))return {count:n,rev:0,stamp:0}}return null}
+function render(){el('count').textContent=count.toLocaleString('ru-RU');el('rounds').textContent='Кругов по 33: '+Math.floor(count/33)+' · В круге: '+(count%33)+'/33'}
+function record(){return {count:count,rev:rev,stamp:stamp}}
+function writeDB(){if(!db)return;try{var t=db.transaction('state','readwrite');t.objectStore('state').put(record(),KEY);t.oncomplete=function(){if(!localSaved)el('status').textContent='Сохранено в дополнительном хранилище браузера.'};t.onerror=function(){if(!localSaved)el('status').textContent='Сохранение недоступно. Сохраните резервный код.'}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(record()));localSaved=true;el('status').textContent='✓ Счёт сохраняется после каждого нажатия и обновления страницы.'}catch(e){localSaved=false;el('status').textContent='Автосохранение недоступно. Используйте резервный код.'}writeDB()}
+function set(n){if(!valid(n))return;hasChanged=true;count=n;rev++;stamp=Date.now();render();save();if(navigator.vibrate)try{navigator.vibrate(10)}catch(e){}}
+el('plus').addEventListener('click',function(){set(count+1)});
+el('minus').addEventListener('click',function(){if(count>0)set(count-1)});
+function open(id){var d=el(id);if(d.showModal)d.showModal();else d.setAttribute('open','open')}
+function close(id){var d=el(id);if(d.close)d.close();else d.removeAttribute('open')}
+el('backup').addEventListener('click',function(){el('code').value='NARIYA:'+count;open('copyDlg')});
+el('closeCopy').addEventListener('click',function(){close('copyDlg')});
+el('copy').addEventListener('click',function(){var t=el('code');if(navigator.clipboard){navigator.clipboard.writeText(t.value).then(function(){el('copy').textContent='Скопировано'},function(){t.focus();t.select()})}else{t.focus();t.select()}});
+el('share').addEventListener('click',function(){if(navigator.share)navigator.share({text:el('code').value,title:'Резервный счёт тасбиха'}).catch(function(){});else{el('code').focus();el('code').select()}});
+el('restore').addEventListener('click',function(){el('restoreError').textContent='';el('restoreCode').value='';open('restoreDlg')});
+el('cancelRestore').addEventListener('click',function(){close('restoreDlg')});
+el('applyRestore').addEventListener('click',function(){var t=el('restoreCode').value.trim().replace(/\s+/g,'');var m=t.match(/^(?:NARIYA:)?(\d+)$/i);var n=m?Number(m[1]):NaN;if(!valid(n)){el('restoreError').textContent='Неверный код';return}set(n);close('restoreDlg')});
+el('reset').addEventListener('click',function(){open('resetDlg')});
+el('cancelReset').addEventListener('click',function(){close('resetDlg')});
+el('confirmReset').addEventListener('click',function(){set(0);close('resetDlg')});
+try{var x=parse(localStorage.getItem(KEY))||parse(localStorage.getItem(OLD));if(x){count=x.count;rev=x.rev;stamp=x.stamp}}catch(e){}
+render();save();
+if('indexedDB' in window){try{var q=indexedDB.open(DB,1);q.onupgradeneeded=function(){q.result.createObjectStore('state')};q.onsuccess=function(){db=q.result;var t=db.transaction('state','readonly'),g=t.objectStore('state').get(KEY);g.onsuccess=function(){var found=parse(g.result);if(!hasChanged&&found&&(found.rev>rev||(found.rev===rev&&found.stamp>stamp))){count=found.count;rev=found.rev;stamp=found.stamp;render();save()}else writeDB()};g.onerror=writeDB}}catch(e){}}
+window.addEventListener('storage',function(e){if(e.key!==KEY)return;var x=parse(e.newValue);if(x&&x.stamp>stamp){count=x.count;rev=x.rev;stamp=x.stamp;render()}});
+
+// Each selected layout is rendered as one continuously scrollable document.
+// Font size is independent of the existing tasbih counter and saved on the device.
+var FONT_KEY='salawat-nariya-five-font-v1',MIN_FONT=36,MAX_FONT=86,fontSize=60;
+try{var storedFont=Number(localStorage.getItem(FONT_KEY));if(Number.isInteger(storedFont)&&storedFont>=MIN_FONT&&storedFont<=MAX_FONT)fontSize=storedFont}catch(e){}
+function applyFont(value){
+ var n=Math.round(Number(value));if(!Number.isFinite(n))return;
+ fontSize=Math.min(MAX_FONT,Math.max(MIN_FONT,n));
+ document.documentElement.style.setProperty('--arabic-size',fontSize+'px');
+ el('fontValue').textContent=String(fontSize)+' px';
+ el('fontSlider').value=String(fontSize);
+ el('fontMinus').disabled=fontSize===MIN_FONT;
+ el('fontPlus').disabled=fontSize===MAX_FONT;
+ try{localStorage.setItem(FONT_KEY,String(fontSize))}catch(e){}
+}
+el('fontMinus').addEventListener('click',function(){applyFont(fontSize-2)});
+el('fontPlus').addEventListener('click',function(){applyFont(fontSize+2)});
+el('fontSlider').addEventListener('input',function(){applyFont(this.value)});
+el('fontSlider').addEventListener('change',function(){applyFont(this.value)});
+applyFont(fontSize);
+// After each reading, return to the beginning without changing the saved counter.
+el('plus').addEventListener('click',function(){window.scrollTo(0,0)});
+
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(function(){});
+})();
+</script>
+</body></html>
