@@ -57,7 +57,7 @@ textarea{min-height:90px}.dlgactions{display:flex;justify-content:flex-end;flex-
 </head>
 <body>
 <main>
-<div class="nav"><span>САЛАВАТ</span><span class="pill">СТИЛЬ ИЗ PDF</span></div>
+<div class="nav"><span>САЛАВАТ</span><span class="pill">НЕ ХАДИС</span></div>
 <h1>Салават ан-Нария</h1>
 <nav class="page-mode" aria-label="Количество листов"><button class="modebtn selected" id="modeThree" type="button">3 листа</button><button class="modebtn" id="modeFive" type="button">5 листов как PDF</button></nav>
 <section id="page-three-0" class="arbox sheet" data-mode="three"  aria-label="Лист 1 из 3"><div class="sheet-number">ЛИСТ 1 / 3</div><div class="arabic" dir="rtl" lang="ar">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ</div></section>
@@ -139,6 +139,11 @@ document.querySelectorAll('.sheet').forEach(function(node){
  node.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY},{passive:true});
  node.addEventListener('touchend',function(e){if(!e.changedTouches.length)return;var dx=e.changedTouches[0].clientX-touchStartX,dy=e.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>70&&Math.abs(dy)<45)movePage(dx<0?1:-1)},{passive:true});
 });
+// An explicit first-visit link can open the exact five-sheet arrangement from the supplied PDF.
+try{
+ var hasModeChoice=localStorage.getItem('salawat-pdfmode-v1')!==null;
+ if(!hasModeChoice&&/(?:[?&])mode=5(?:&|$)/.test(location.search||'')){mode='five';index=0}
+}catch(e){}
 displayPage(false);
 
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(function(){});
