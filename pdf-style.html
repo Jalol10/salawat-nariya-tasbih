@@ -14,12 +14,12 @@
 <style>
 :root{color-scheme:dark;--bg:#071c14;--gold:#e5ca8f;--text:#f7f1e6;--light:#a7c5b1}
 *{box-sizing:border-box}html{background:var(--bg);-webkit-text-size-adjust:100%}
-body{margin:0;color:var(--text);min-height:100svh;background:radial-gradient(ellipse at 10% 0%,#173d2d 0%,#0a291c 38%,#03170f 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:calc(246px + env(safe-area-inset-bottom))}
+body{margin:0;color:var(--text);min-height:100svh;background:radial-gradient(ellipse at 10% 0%,#173d2d 0%,#0a291c 38%,#03170f 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:calc(158px + env(safe-area-inset-bottom))}
 main{max-width:720px;margin:auto;padding:22px 14px 24px}
 .nav{display:flex;align-items:center;justify-content:space-between;font-weight:750;font-size:11px;color:var(--gold);letter-spacing:1.8px}
 .pill{border:1px solid #3d634d;border-radius:20px;color:var(--light);letter-spacing:0;font-size:10px;padding:7px 9px}
 h1{margin:18px 0 13px;font-size:23px}
-.arbox{border:1px solid #284b36;border-radius:19px;padding:22px 16px 26px;background:rgba(0,20,13,.68);min-height:clamp(390px,63svh,650px);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.arbox{border:1px solid #284b36;border-radius:19px;padding:22px 16px 26px;background:rgba(0,20,13,.68);margin-bottom:18px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .arabic{direction:rtl;text-align:center;font-family:"Noto Naskh Arabic","Geeza Pro","Arabic Typesetting",serif;font-weight:500;font-size:clamp(56px,15vw,70px);line-height:1.53;word-spacing:.02em;width:100%;overflow-wrap:normal;hyphens:none}
 .hint{font-size:12px;line-height:1.6;color:var(--light);margin:13px 3px}
 .tools{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
@@ -39,20 +39,15 @@ dialog h2{margin:0 0 10px;font-size:19px}dialog p{font-size:13px;line-height:1.6
 textarea,input{width:100%;font-size:16px;color:var(--text);background:#04190f;border:1px solid #597a60;border-radius:10px;padding:12px;margin:8px 0;min-height:50px}
 textarea{min-height:90px}.dlgactions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}
 
-/* Five-sheet view follows the uploaded 360x640 PDF's colour, border and Naskh font. */
+/* Arabic blocks in vertical reading order, styled like the reference PDF. */
 .nav{gap:6px}.pill{white-space:nowrap}
 .sheet-number{font-size:11px;color:#d7c38a;letter-spacing:.08em;margin:0 0 12px}
 .sheet[hidden]{display:none!important}
-.pager{position:fixed;z-index:5;bottom:calc(131px + env(safe-area-inset-bottom));left:0;right:0;background:#0b2d20;border-top:1px solid #3c5e49;padding:9px 12px}
-.pager-row{max-width:690px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.pagebtn{font-size:14px;color:#f7f1e6;border:1px solid #46664f;background:#19412f;border-radius:11px;padding:9px 13px;min-height:44px}
-.pagebtn:disabled{opacity:.28;cursor:default}
-#pageIndicator{color:#e5ca8f;font-size:15px;font-weight:750;font-variant-numeric:tabular-nums;white-space:nowrap}
 .page-mode{display:flex;align-items:center;gap:7px;margin-bottom:13px}
 .modebtn{border:1px solid #456850;padding:8px 15px;border-radius:11px;background:#0c281d;color:#e5d6b5;font-size:13px;font-weight:700;min-height:42px}
 .modebtn.selected{background:#d6bb82;color:#072019;border-color:#d6bb82}
 @media(max-width:380px){#plus{min-width:124px}.arbox{padding:16px 12px}.arabic{font-size:clamp(55px,15vw,66px)}}
-@media(min-width:700px){.arbox{min-height:600px}}
+@media(min-width:700px){.arbox{padding:28px 30px}}
 </style>
 </head>
 <body>
@@ -60,6 +55,7 @@ textarea{min-height:90px}.dlgactions{display:flex;justify-content:flex-end;flex-
 <div class="nav"><span>САЛАВАТ</span><span class="pill">НЕ ХАДИС</span></div>
 <h1>Салават ан-Нария</h1>
 <nav class="page-mode" aria-label="Количество листов"><button class="modebtn selected" id="modeThree" type="button">3 листа</button><button class="modebtn" id="modeFive" type="button">5 листов как PDF</button></nav>
+<p class="hint" style="margin:0 2px 13px">Листай вниз — все части текста идут подряд. После чтения нажми +1.</p>
 <section id="page-three-0" class="arbox sheet" data-mode="three"  aria-label="Лист 1 из 3"><div class="sheet-number">ЛИСТ 1 / 3</div><div class="arabic" dir="rtl" lang="ar">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ</div></section>
 <section id="page-three-1" class="arbox sheet" data-mode="three" hidden aria-label="Лист 2 из 3"><div class="sheet-number">ЛИСТ 2 / 3</div><div class="arabic" dir="rtl" lang="ar">وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ</div></section>
 <section id="page-three-2" class="arbox sheet" data-mode="three" hidden aria-label="Лист 3 из 3"><div class="sheet-number">ЛИСТ 3 / 3</div><div class="arabic" dir="rtl" lang="ar">وَيُسْتَسْقَى الْغَمَامُ بِوَجْهِهِ الْكَرِيمِ وَعَلَى آلِهِ وَصَحْبِهِ فِي كُلِّ لَمْحَةٍ وَنَفَسٍ بِعَدَدِ كُلِّ مَعْلُومٍ لَكَ</div></section>
@@ -74,7 +70,6 @@ textarea{min-height:90px}.dlgactions{display:flex;justify-content:flex-end;flex-
 <p id="status" role="status">Проверка сохранения…</p>
 <details><summary>Добавить на главный экран iPhone</summary><p>Откройте страницу в Safari → «Поделиться» → «На экран Домой» → «Добавить». После этого открывайте тасбих через новую иконку. Для защиты от удаления данных браузера периодически сохраняйте резервный код в «Заметках».</p></details>
 </main>
-<div class="pager"><div class="pager-row"><button type="button" class="pagebtn" id="pagePrev" aria-label="Предыдущий лист">← Назад</button><span id="pageIndicator" aria-live="polite">1 / 3</span><button type="button" class="pagebtn" id="pageNext" aria-label="Следующий лист">Далее →</button></div></div>
 <div class="counter"><div class="countrow"><div><div class="label">Прочитано</div><div class="number" id="count">0</div></div><div class="controls"><button type="button" id="minus" aria-label="Минус один">−1</button><button type="button" id="plus" aria-label="Прибавить одно">+1</button></div></div><div id="rounds">Кругов по 33: 0 · В круге: 0/33</div></div>
 <dialog id="copyDlg"><h2>Резервный код</h2><p>Сохраните код в «Заметках» или отправьте себе. Восстанавливает счёт даже после очистки сайта.</p><textarea id="code" readonly></textarea><div class="dlgactions"><button type="button" class="tool" id="share">Поделиться</button><button type="button" class="tool" id="copy">Копировать</button><button type="button" class="tool" id="closeCopy">Закрыть</button></div></dialog>
 <dialog id="restoreDlg"><h2>Восстановить счёт</h2><p>Введите код вида NARIYA:123 или число прочтений.</p><input type="text" id="restoreCode" placeholder="NARIYA:123" autocomplete="off" inputmode="text"><div id="restoreError" role="alert"></div><div class="dlgactions"><button type="button" class="tool" id="cancelRestore">Отмена</button><button type="button" class="tool" id="applyRestore">Восстановить</button></div></dialog>
@@ -111,40 +106,28 @@ render();save();
 if('indexedDB' in window){try{var q=indexedDB.open(DB,1);q.onupgradeneeded=function(){q.result.createObjectStore('state')};q.onsuccess=function(){db=q.result;var t=db.transaction('state','readonly'),g=t.objectStore('state').get(KEY);g.onsuccess=function(){var found=parse(g.result);if(!hasChanged&&found&&(found.rev>rev||(found.rev===rev&&found.stamp>stamp))){count=found.count;rev=found.rev;stamp=found.stamp;render();save()}else writeDB()};g.onerror=writeDB}}catch(e){}}
 window.addEventListener('storage',function(e){if(e.key!==KEY)return;var x=parse(e.newValue);if(x&&x.stamp>stamp){count=x.count;rev=x.rev;stamp=x.stamp;render()}});
 
-var mode='three',index=0;
-try{if(localStorage.getItem('salawat-pdfmode-v1')==='five')mode='five';var savedIndex=Number(localStorage.getItem('salawat-pdfpage-'+mode+'-v1'));if(Number.isInteger(savedIndex)&&savedIndex>=0)index=savedIndex}catch(e){}
-function displayPage(scroll){
- var length=mode==='three'?3:5;
- if(index>=length)index=length-1;if(index<0)index=0;
+// Each selected layout is rendered as one continuously scrollable document.
+var mode='three';
+try{if(localStorage.getItem('salawat-pdfmode-v1')==='five')mode='five'}catch(e){}
+try{
+ var selected=localStorage.getItem('salawat-pdfmode-v1');
+ if(selected===null&&/(?:[?&])mode=5(?:&|$)/.test(location.search||''))mode='five'
+}catch(e){}
+function displayPages(scroll){
  document.querySelectorAll('.sheet').forEach(function(node){
-  node.hidden=node.getAttribute('data-mode')!==mode||Number(node.id.slice(-1))!==index;
+  node.hidden=node.getAttribute('data-mode')!==mode;
  });
- el('pageIndicator').textContent=(index+1)+' / '+length;
- el('pagePrev').disabled=index===0;el('pageNext').disabled=index===length-1;
  el('modeThree').classList.toggle('selected',mode==='three');
  el('modeFive').classList.toggle('selected',mode==='five');
- try{localStorage.setItem('salawat-pdfmode-v1',mode);localStorage.setItem('salawat-pdfpage-'+mode+'-v1',String(index))}catch(e){}
- if(scroll!==false)window.scrollTo({top:0,behavior:'instant'});
+ try{localStorage.setItem('salawat-pdfmode-v1',mode)}catch(e){}
+ if(scroll)window.scrollTo(0,0);
 }
-function movePage(x){index+=x;displayPage(true)}
-function switchMode(m){if(mode===m)return;mode=m;index=0;try{var val=Number(localStorage.getItem('salawat-pdfpage-'+m+'-v1'));if(Number.isInteger(val)&&val>=0)index=val}catch(e){}displayPage(true)}
-el('pagePrev').addEventListener('click',function(){movePage(-1)});
-el('pageNext').addEventListener('click',function(){movePage(1)});
+function switchMode(m){if(mode===m)return;mode=m;displayPages(true)}
 el('modeThree').addEventListener('click',function(){switchMode('three')});
 el('modeFive').addEventListener('click',function(){switchMode('five')});
-// Counter remains identical to the original app and uses the same storage key.
-el('plus').addEventListener('click',function(){index=0;displayPage(true)});
-var touchStartX=0,touchStartY=0;
-document.querySelectorAll('.sheet').forEach(function(node){
- node.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY},{passive:true});
- node.addEventListener('touchend',function(e){if(!e.changedTouches.length)return;var dx=e.changedTouches[0].clientX-touchStartX,dy=e.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>70&&Math.abs(dy)<45)movePage(dx<0?1:-1)},{passive:true});
-});
-// An explicit first-visit link can open the exact five-sheet arrangement from the supplied PDF.
-try{
- var hasModeChoice=localStorage.getItem('salawat-pdfmode-v1')!==null;
- if(!hasModeChoice&&/(?:[?&])mode=5(?:&|$)/.test(location.search||'')){mode='five';index=0}
-}catch(e){}
-displayPage(false);
+// Keep the original +1 counter and restart reading from the beginning.
+el('plus').addEventListener('click',function(){window.scrollTo(0,0)});
+displayPages(false);
 
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(function(){});
 })();
