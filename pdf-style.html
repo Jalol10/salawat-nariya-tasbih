@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Тасбих">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="manifest" href="pdf-style-manifest.webmanifest">
-<title>Салават ан-Нария — PDF-стиль и тасбих</title>
+<title>Салават ан-Нария — один лист, размер шрифта и тасбих</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500&display=swap">
 <style>
 :root{color-scheme:dark;--bg:#071c14;--gold:#e5ca8f;--text:#f7f1e6;--light:#a7c5b1}
@@ -39,33 +39,34 @@ dialog h2{margin:0 0 10px;font-size:19px}dialog p{font-size:13px;line-height:1.6
 textarea,input{width:100%;font-size:16px;color:var(--text);background:#04190f;border:1px solid #597a60;border-radius:10px;padding:12px;margin:8px 0;min-height:50px}
 textarea{min-height:90px}.dlgactions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}
 
-/* Arabic blocks in vertical reading order, styled like the reference PDF. */
+/* Single readable Arabic page; font settings adjustable and persisted separately from count. */
 .nav{gap:6px}.pill{white-space:nowrap}
-.sheet-number{font-size:11px;color:#d7c38a;letter-spacing:.08em;margin:0 0 12px}
-.sheet[hidden]{display:none!important}
-.page-mode{display:flex;align-items:center;gap:7px;margin-bottom:13px}
-.modebtn{border:1px solid #456850;padding:8px 15px;border-radius:11px;background:#0c281d;color:#e5d6b5;font-size:13px;font-weight:700;min-height:42px}
-.modebtn.selected{background:#d6bb82;color:#072019;border-color:#d6bb82}
-@media(max-width:380px){#plus{min-width:124px}.arbox{padding:16px 12px}.arabic{font-size:clamp(55px,15vw,66px)}}
-@media(min-width:700px){.arbox{padding:28px 30px}}
+.arbox{min-height:0;display:block;border:1px solid #284b36;border-radius:20px;background:rgba(0,20,13,.70);padding:15px 13px 20px;overflow:visible}
+.arabic{direction:rtl;text-align:justify;text-align-last:center;font-family:"Noto Naskh Arabic","Geeza Pro","Arabic Typesetting",serif;font-weight:500;font-size:var(--arabic-size,32px);line-height:1.48;word-spacing:0.01em;overflow-wrap:normal;hyphens:none}
+.fontbar{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#0d3022;border:1px solid #355746;border-radius:14px;padding:8px 10px;margin:0 0 5px}
+.fontcaption{color:#d4dabe;font-size:12px}
+.fontbuttons{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.fontbtn{border:1px solid #53745f;background:#19432e;color:#f5f0e6;border-radius:9px;font-size:18px;font-weight:750;min-width:48px;min-height:40px}
+#fontValue{display:inline-block;min-width:36px;text-align:center;color:#e5ca8f;font-weight:750;font-size:14px;font-variant-numeric:tabular-nums}
+#fontSlider{display:block;appearance:auto;accent-color:#e5ca8f;width:100%;height:21px;margin:0 0 8px;touch-action:pan-x}
+@media (max-width:380px){.arbox{padding:12px 11px 17px}#plus{min-width:124px}.fontcaption{font-size:11px}}
 </style>
 </head>
 <body>
 <main>
 <div class="nav"><span>САЛАВАТ</span><span class="pill">НЕ ХАДИС</span></div>
 <h1>Салават ан-Нария</h1>
-<nav class="page-mode" aria-label="Количество листов"><button class="modebtn selected" id="modeThree" type="button">3 листа</button><button class="modebtn" id="modeFive" type="button">5 листов как PDF</button></nav>
-<p class="hint" style="margin:0 2px 13px">Листай вниз — все части текста идут подряд. После чтения нажми +1.</p>
-<section id="page-three-0" class="arbox sheet" data-mode="three"  aria-label="Лист 1 из 3"><div class="sheet-number">ЛИСТ 1 / 3</div><div class="arabic" dir="rtl" lang="ar">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ</div></section>
-<section id="page-three-1" class="arbox sheet" data-mode="three" hidden aria-label="Лист 2 из 3"><div class="sheet-number">ЛИСТ 2 / 3</div><div class="arabic" dir="rtl" lang="ar">وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ</div></section>
-<section id="page-three-2" class="arbox sheet" data-mode="three" hidden aria-label="Лист 3 из 3"><div class="sheet-number">ЛИСТ 3 / 3</div><div class="arabic" dir="rtl" lang="ar">وَيُسْتَسْقَى الْغَمَامُ بِوَجْهِهِ الْكَرِيمِ وَعَلَى آلِهِ وَصَحْبِهِ فِي كُلِّ لَمْحَةٍ وَنَفَسٍ بِعَدَدِ كُلِّ مَعْلُومٍ لَكَ</div></section>
-<section id="page-five-0" class="arbox sheet" data-mode="five" hidden aria-label="Лист 1 из 5"><div class="sheet-number">ЛИСТ 1 / 5</div><div class="arabic" dir="rtl" lang="ar">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ</div></section>
-<section id="page-five-1" class="arbox sheet" data-mode="five" hidden aria-label="Лист 2 из 5"><div class="sheet-number">ЛИСТ 2 / 5</div><div class="arabic" dir="rtl" lang="ar">الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ</div></section>
-<section id="page-five-2" class="arbox sheet" data-mode="five" hidden aria-label="Лист 3 из 5"><div class="sheet-number">ЛИСТ 3 / 5</div><div class="arabic" dir="rtl" lang="ar">وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ وَيُسْتَسْقَى الْغَمَامُ</div></section>
-<section id="page-five-3" class="arbox sheet" data-mode="five" hidden aria-label="Лист 4 из 5"><div class="sheet-number">ЛИСТ 4 / 5</div><div class="arabic" dir="rtl" lang="ar">بِوَجْهِهِ الْكَرِيمِ وَعَلَى آلِهِ وَصَحْبِهِ فِي كُلِّ لَمْحَةٍ وَنَفَسٍ</div></section>
-<section id="page-five-4" class="arbox sheet" data-mode="five" hidden aria-label="Лист 5 из 5"><div class="sheet-number">ЛИСТ 5 / 5</div><div class="arabic" dir="rtl" lang="ar">بِعَدَدِ كُلِّ مَعْلُومٍ لَكَ</div></section>
-<p class="hint">Внешний вид взят из загруженного PDF. Текст использует выбранную ранее редакцию «الْخَوَاتِمِ» вместо «الْخِتَامِ» в образце.</p>
-<p class="hint">Полный текст в редакции «وَحُسْنُ الْخَوَاتِمِ». Это распространённый салават, не достоверно переданная от Пророка ﷺ полная формула.</p>
+<div class="fontbar" aria-label="Настройка размера арабского текста">
+ <span class="fontcaption">Размер арабских букв</span>
+ <div class="fontbuttons">
+  <button type="button" id="fontMinus" class="fontbtn" aria-label="Уменьшить арабский шрифт">А−</button>
+  <output id="fontValue" for="fontSlider">32</output>
+  <button type="button" id="fontPlus" class="fontbtn" aria-label="Увеличить арабский шрифт">А+</button>
+ </div>
+</div>
+<input type="range" id="fontSlider" min="22" max="58" step="1" value="32" aria-label="Размер арабского текста в пикселях">
+<section class="arbox" aria-label="Полный салават на одном листе"><div class="arabic" id="salawatText" dir="rtl" lang="ar">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ وَيُسْتَسْقَى الْغَمَامُ بِوَجْهِهِ الْكَرِيمِ وَعَلَى آلِهِ وَصَحْبِهِ فِي كُلِّ لَمْحَةٍ وَنَفَسٍ بِعَدَدِ كُلِّ مَعْلُومٍ لَكَ</div></section>
+<p class="hint">Полный салават одним текстом. Редакция «وَحُسْنُ الْخَوَاتِمِ». Это не установленная достоверным хадисом пророческая формула.</p>
 <div class="tools"><button type="button" class="tool" id="backup">Резервный код</button><button type="button" class="tool" id="restore">Восстановить</button><button type="button" class="tool" id="reset">Сброс</button></div>
 <p id="status" role="status">Проверка сохранения…</p>
 <details><summary>Добавить на главный экран iPhone</summary><p>Откройте страницу в Safari → «Поделиться» → «На экран Домой» → «Добавить». После этого открывайте тасбих через новую иконку. Для защиты от удаления данных браузера периодически сохраняйте резервный код в «Заметках».</p></details>
@@ -107,27 +108,26 @@ if('indexedDB' in window){try{var q=indexedDB.open(DB,1);q.onupgradeneeded=funct
 window.addEventListener('storage',function(e){if(e.key!==KEY)return;var x=parse(e.newValue);if(x&&x.stamp>stamp){count=x.count;rev=x.rev;stamp=x.stamp;render()}});
 
 // Each selected layout is rendered as one continuously scrollable document.
-var mode='three';
-try{if(localStorage.getItem('salawat-pdfmode-v1')==='five')mode='five'}catch(e){}
-try{
- var selected=localStorage.getItem('salawat-pdfmode-v1');
- if(selected===null&&/(?:[?&])mode=5(?:&|$)/.test(location.search||''))mode='five'
-}catch(e){}
-function displayPages(scroll){
- document.querySelectorAll('.sheet').forEach(function(node){
-  node.hidden=node.getAttribute('data-mode')!==mode;
- });
- el('modeThree').classList.toggle('selected',mode==='three');
- el('modeFive').classList.toggle('selected',mode==='five');
- try{localStorage.setItem('salawat-pdfmode-v1',mode)}catch(e){}
- if(scroll)window.scrollTo(0,0);
+// Font size is independent of the existing tasbih counter and saved on the device.
+var FONT_KEY='salawat-nariya-arabic-font-v1',MIN_FONT=22,MAX_FONT=58,fontSize=32;
+try{var storedFont=Number(localStorage.getItem(FONT_KEY));if(Number.isInteger(storedFont)&&storedFont>=MIN_FONT&&storedFont<=MAX_FONT)fontSize=storedFont}catch(e){}
+function applyFont(value){
+ var n=Math.round(Number(value));if(!Number.isFinite(n))return;
+ fontSize=Math.min(MAX_FONT,Math.max(MIN_FONT,n));
+ document.documentElement.style.setProperty('--arabic-size',fontSize+'px');
+ el('fontValue').textContent=String(fontSize)+' px';
+ el('fontSlider').value=String(fontSize);
+ el('fontMinus').disabled=fontSize===MIN_FONT;
+ el('fontPlus').disabled=fontSize===MAX_FONT;
+ try{localStorage.setItem(FONT_KEY,String(fontSize))}catch(e){}
 }
-function switchMode(m){if(mode===m)return;mode=m;displayPages(true)}
-el('modeThree').addEventListener('click',function(){switchMode('three')});
-el('modeFive').addEventListener('click',function(){switchMode('five')});
-// Keep the original +1 counter and restart reading from the beginning.
+el('fontMinus').addEventListener('click',function(){applyFont(fontSize-2)});
+el('fontPlus').addEventListener('click',function(){applyFont(fontSize+2)});
+el('fontSlider').addEventListener('input',function(){applyFont(this.value)});
+el('fontSlider').addEventListener('change',function(){applyFont(this.value)});
+applyFont(fontSize);
+// After each reading, return to the beginning without changing the saved counter.
 el('plus').addEventListener('click',function(){window.scrollTo(0,0)});
-displayPages(false);
 
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(function(){});
 })();
