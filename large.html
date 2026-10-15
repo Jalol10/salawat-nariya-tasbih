@@ -9,17 +9,17 @@
 <meta name="apple-mobile-web-app-title" content="Тасбих">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Салават ан-Нария — Тасбих XL</title>
+<title>Салават ан-Нария — 3 страницы, крупный тасбих</title>
 <style>
 :root{color-scheme:dark;--bg:#071c14;--gold:#e5ca8f;--text:#f7f1e6;--light:#a7c5b1}
 *{box-sizing:border-box}html{background:var(--bg);-webkit-text-size-adjust:100%}
-body{margin:0;color:var(--text);min-height:100svh;background:radial-gradient(ellipse at 10% 0%,#173d2d 0%,#0a291c 38%,#03170f 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:calc(170px + env(safe-area-inset-bottom))}
+body{margin:0;color:var(--text);min-height:100svh;background:radial-gradient(ellipse at 10% 0%,#173d2d 0%,#0a291c 38%,#03170f 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:calc(250px + env(safe-area-inset-bottom))}
 main{max-width:720px;margin:auto;padding:22px 14px 24px}
 .nav{display:flex;align-items:center;justify-content:space-between;font-weight:750;font-size:11px;color:var(--gold);letter-spacing:1.8px}
 .pill{border:1px solid #3d634d;border-radius:20px;color:var(--light);letter-spacing:0;font-size:10px;padding:7px 9px}
 h1{margin:23px 0 18px;font-size:26px}
 .arbox{border:1px solid #335a45;border-radius:22px;padding:18px 16px 22px;background:rgba(0,20,13,.68)}
-.arabic{direction:rtl;text-align:justify;text-align-last:center;font-family:"Geeza Pro","Noto Naskh Arabic","Arabic Typesetting",serif;font-size:clamp(60px,16vw,86px);line-height:1.95;word-spacing:.02em}
+.arabic{direction:rtl;text-align:justify;text-align-last:center;font-family:"Geeza Pro","Noto Naskh Arabic","Arabic Typesetting",serif;font-size:clamp(60px,16vw,86px);line-height:1.48;word-spacing:.02em}
 .hint{font-size:12px;line-height:1.6;color:var(--light);margin:13px 3px}
 .tools{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
 button{font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -37,19 +37,32 @@ dialog{color:var(--text);background:#08271b;border:1px solid #5b795e;border-radi
 dialog h2{margin:0 0 10px;font-size:19px}dialog p{font-size:13px;line-height:1.6;color:var(--light)}
 textarea,input{width:100%;font-size:16px;color:var(--text);background:#04190f;border:1px solid #597a60;border-radius:10px;padding:12px;margin:8px 0;min-height:50px}
 textarea{min-height:90px}.dlgactions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}
+
+.sheet[hidden]{display:none !important}
+.sheet{padding:20px 15px 27px;min-height:clamp(450px,65svh,800px)}
+.sheetheading{color:#d6c28f;text-align:center;letter-spacing:.06em;font-size:12px;font-weight:700;padding:2px 0 14px}
+.pager{position:fixed;bottom:calc(136px + env(safe-area-inset-bottom));left:0;right:0;z-index:10;padding:7px 15px;background:#09251c;border-top:1px solid #325842}
+.pagerin{max-width:690px;display:flex;margin:auto;align-items:center;gap:12px;justify-content:space-between}
+.pagebtn{color:#f5eddf;background:#19432e;border:1px solid #4a6b52;border-radius:11px;font-size:15px;min-height:43px;padding:5px 12px}
+.pagebtn:disabled{opacity:.25;cursor:default}
+#pageIndicator{font-size:14px;font-weight:700;color:#e5ca8f}
+@media(max-width:360px){#plus{min-width:116px}.pagebtn{padding:5px 9px}.arabic{font-size:60px}}
 </style>
 </head>
 <body>
 <main>
 <div class="nav"><span>САЛАВАТ</span><span class="pill">ТАСБИХ · XL</span></div>
 <h1>Салават ан-Нария</h1>
-<div class="arbox"><div class="arabic" lang="ar" dir="rtl">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ وَيُسْتَسْقَى الْغَمَامُ بِوَجْهِهِ الْكَرِيمِ وَعَلَى آلِهِ وَصَحْبِهِ فِي كُلِّ لَمْحَةٍ وَنَفَسٍ بِعَدَدِ كُلِّ مَعْلُومٍ لَكَ</div></div>
-<p class="hint">Шрифт увеличен в 2 раза. <a href="./" style="color:#e5ca8f;text-decoration:underline">Открыть обычный размер</a>.</p>
+<section class="arbox sheet" id="sheet-1" data-index="0"  aria-label="Страница 1 из 3"><div class="sheetheading">Лист 1 из 3</div><div class="arabic" lang="ar" dir="rtl">اللَّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدٍ الَّذِي تَنْحَلُّ بِهِ الْعُقَدُ</div></section>
+<section class="arbox sheet" id="sheet-2" data-index="1" hidden aria-label="Страница 2 из 3"><div class="sheetheading">Лист 2 из 3</div><div class="arabic" lang="ar" dir="rtl">وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ</div></section>
+<section class="arbox sheet" id="sheet-3" data-index="2" hidden aria-label="Страница 3 из 3"><div class="sheetheading">Лист 3 из 3</div><div class="arabic" lang="ar" dir="rtl">وَيُسْتَسْقَى الْغَمَامُ بِوَجْهِهِ الْكَرِيمِ وَعَلَى آلِهِ وَصَحْبِهِ فِي كُلِّ لَمْحَةٍ وَنَفَسٍ بِعَدَدِ كُلِّ مَعْلُومٍ لَكَ</div></section>
+<p class="hint">Шрифт увеличен в 2 раза. Текст разделён на три листа. <a href="./" style="color:#e5ca8f;text-decoration:underline">Открыть обычный размер</a>.</p>
 <p class="hint">Полный текст в редакции «وَحُسْنُ الْخَوَاتِمِ». Это распространённый салават, не достоверно переданная от Пророка ﷺ полная формула.</p>
 <div class="tools"><button type="button" class="tool" id="backup">Резервный код</button><button type="button" class="tool" id="restore">Восстановить</button><button type="button" class="tool" id="reset">Сброс</button></div>
 <p id="status" role="status">Проверка сохранения…</p>
 <details><summary>Добавить на главный экран iPhone</summary><p>Откройте страницу в Safari → «Поделиться» → «На экран Домой» → «Добавить». После этого открывайте тасбих через новую иконку. Для защиты от удаления данных браузера периодически сохраняйте резервный код в «Заметках».</p></details>
 </main>
+<div class="pager" aria-label="Переключение страниц"><div class="pagerin"><button type="button" class="pagebtn" id="previousPage" aria-label="Предыдущая страница">← Назад</button><span id="pageIndicator" aria-live="polite">1 / 3</span><button type="button" class="pagebtn" id="nextPage" aria-label="Следующая страница">Далее →</button></div></div>
 <div class="counter"><div class="countrow"><div><div class="label">Прочитано</div><div class="number" id="count">0</div></div><div class="controls"><button type="button" id="minus" aria-label="Минус один">−1</button><button type="button" id="plus" aria-label="Прибавить одно">+1</button></div></div><div id="rounds">Кругов по 33: 0 · В круге: 0/33</div></div>
 <dialog id="copyDlg"><h2>Резервный код</h2><p>Сохраните код в «Заметках» или отправьте себе. Восстанавливает счёт даже после очистки сайта.</p><textarea id="code" readonly></textarea><div class="dlgactions"><button type="button" class="tool" id="share">Поделиться</button><button type="button" class="tool" id="copy">Копировать</button><button type="button" class="tool" id="closeCopy">Закрыть</button></div></dialog>
 <dialog id="restoreDlg"><h2>Восстановить счёт</h2><p>Введите код вида NARIYA:123 или число прочтений.</p><input type="text" id="restoreCode" placeholder="NARIYA:123" autocomplete="off" inputmode="text"><div id="restoreError" role="alert"></div><div class="dlgactions"><button type="button" class="tool" id="cancelRestore">Отмена</button><button type="button" class="tool" id="applyRestore">Восстановить</button></div></dialog>
@@ -85,6 +98,32 @@ try{var x=parse(localStorage.getItem(KEY))||parse(localStorage.getItem(OLD));if(
 render();save();
 if('indexedDB' in window){try{var q=indexedDB.open(DB,1);q.onupgradeneeded=function(){q.result.createObjectStore('state')};q.onsuccess=function(){db=q.result;var t=db.transaction('state','readonly'),g=t.objectStore('state').get(KEY);g.onsuccess=function(){var found=parse(g.result);if(!hasChanged&&found&&(found.rev>rev||(found.rev===rev&&found.stamp>stamp))){count=found.count;rev=found.rev;stamp=found.stamp;render();save()}else writeDB()};g.onerror=writeDB}}catch(e){}}
 window.addEventListener('storage',function(e){if(e.key!==KEY)return;var x=parse(e.newValue);if(x&&x.stamp>stamp){count=x.count;rev=x.rev;stamp=x.stamp;render()}});
+
+var PAGEKEY='salawat-nariya-large-page-v1';
+var pageIndex=0;
+var pageSheets=[el('sheet-1'),el('sheet-2'),el('sheet-3')];
+function showPage(n,scroll){
+ if(n<0||n>=pageSheets.length)return;
+ pageIndex=n;
+ pageSheets.forEach(function(node,i){node.hidden=i!==n});
+ el('pageIndicator').textContent=(n+1)+' / 3';
+ el('previousPage').disabled=n===0;
+ el('nextPage').disabled=n===2;
+ try{localStorage.setItem(PAGEKEY,String(n))}catch(e){}
+ if(scroll!==false)window.scrollTo(0,0);
+}
+el('previousPage').addEventListener('click',function(){showPage(pageIndex-1)});
+el('nextPage').addEventListener('click',function(){showPage(pageIndex+1)});
+try{var restoredPage=Number(localStorage.getItem(PAGEKEY));if(Number.isInteger(restoredPage)&&restoredPage>=0&&restoredPage<=2)pageIndex=restoredPage}catch(e){}
+showPage(pageIndex,false);
+// After completing a full reading, +1 returns to the first sheet for the next recitation.
+el('plus').addEventListener('click',function(){showPage(0)});
+var startX=0,startY=0;
+pageSheets.forEach(function(node){
+ node.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;startX=e.touches[0].clientX;startY=e.touches[0].clientY},{passive:true});
+ node.addEventListener('touchend',function(e){if(!e.changedTouches.length)return;var dx=e.changedTouches[0].clientX-startX;var dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>65&&Math.abs(dy)<50)showPage(pageIndex+(dx<0?1:-1))},{passive:true});
+});
+
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(function(){});
 })();
 </script>
